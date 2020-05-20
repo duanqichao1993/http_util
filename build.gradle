@@ -1,0 +1,39 @@
+plugins {
+    id 'org.springframework.boot' version '2.3.0.RELEASE'
+    id 'io.spring.dependency-management' version '1.0.9.RELEASE'
+    id 'java'
+}
+
+group = 'com.example'
+version = '0.0.1-SNAPSHOT'
+sourceCompatibility = '1.8'
+
+repositories {
+    maven {
+        url 'http://maven.aliyun.com/nexus/content/groups/public/'
+    }
+    maven {
+        url 'http://maven.aliyun.com/nexus/content/repositories/jcenter'
+    }
+    mavenCentral()
+}
+
+dependencies {
+    implementation 'org.springframework.boot:spring-boot-starter'
+    developmentOnly 'org.springframework.boot:spring-boot-devtools'
+    testImplementation('org.springframework.boot:spring-boot-starter-test') {
+        exclude group: 'org.junit.vintage', module: 'junit-vintage-engine'
+    }
+    compile group: 'com.squareup.okhttp3', name: 'okhttp', version: '4.4.0'
+    testCompile group: 'com.squareup.okhttp3', name: 'mockwebserver', version: '4.4.0'
+    testCompile group: 'org.assertj', name: 'assertj-core', version: '3.16.1'
+    // https://mvnrepository.com/artifact/com.alibaba/fastjson
+    compile group: 'com.alibaba', name: 'fastjson', version: '1.2.68'
+
+
+
+}
+
+test {
+    useJUnitPlatform()
+}
