@@ -65,7 +65,7 @@ public class HttpUtilTest {
     @Test
     public void should_return_code_is_200_and_body_is_not_null_when_post() throws InterruptedException, IOException {
         HttpUrl url = mockWebServer.url("/v1/profile/info");
-        HttpUtil<String> httpUtil = new HttpUtil<>(url);
+        HttpUtil httpUtil = new HttpUtil(url);
         Response response = httpUtil.doPost("1111");
         RecordedRequest recordedRequest = mockWebServer.takeRequest();
         assertThat(recordedRequest.getPath()).isEqualTo("/v1/profile/info");
@@ -77,7 +77,7 @@ public class HttpUtilTest {
     @Test
     public void should_return_code_is_200_and_body_is_not_null_when_post_with_header()throws InterruptedException, IOException {
         HttpUrl url = mockWebServer.url("/v2/header/test");
-        HttpUtil<String> httpUtil = new HttpUtil<>(url);
+        HttpUtil httpUtil = new HttpUtil(url);
         // header 准备
         Headers headers = Headers.of("token", "this is token");
         // 发起http post 带header 调用
@@ -94,7 +94,7 @@ public class HttpUtilTest {
     @Test
     public void should_return_object_when_post() throws InterruptedException, IOException {
         HttpUrl url = mockWebServer.url("/v1/profile/info");
-        HttpUtil<String> httpUtil = new HttpUtil<>(url);
+        HttpUtil httpUtil = new HttpUtil(url);
         String result  = httpUtil.doPostEntity("1111", String.class);
         System.out.println(result);
         RecordedRequest recordedRequest = mockWebServer.takeRequest();

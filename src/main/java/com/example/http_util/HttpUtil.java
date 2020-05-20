@@ -9,7 +9,7 @@ import java.io.IOException;
 import java.security.InvalidParameterException;
 import java.util.Objects;
 
-public class HttpUtil<T> {
+public class HttpUtil {
     private final HttpUrl url;
 
     public static final MediaType MEDIA_TYPE_JSON
@@ -42,7 +42,7 @@ public class HttpUtil<T> {
         return call.execute();
     }
 
-    public T doPostEntity(Object body , Class<T> returnEntity) throws IOException {
+public <T> T doPostEntity(Object body , Class<T> returnEntity) throws IOException {
         Response response = this.doPost(body);
         if (response == null) {
             throw new InvalidParameterException("response is null ");
